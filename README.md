@@ -1,2 +1,8 @@
-# Turnos-UI
-PWA Turnos Online
+
+Instalación del proyecto base
+```
+npm install
+```
+
+
+
