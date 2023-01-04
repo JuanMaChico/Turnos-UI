@@ -6,6 +6,7 @@ import GridStepper from "../../components/Stepper/Stepper";
 
 const ScheduleShifts = () => {
 	const handleChange = (newValue) => {
+		console.log(newValue)
 		setValue(newValue);
 	};
 

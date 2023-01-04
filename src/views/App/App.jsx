@@ -3,15 +3,15 @@
  */
 
 // Dependencias
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, createBrowserRouter } from "react-router-dom";
 //Components
 import Login from "../Login/Login";
 import Home from "../Home/Home";
 import ScheduleShifts from "../ScheduleShifts/ScheduleShifts";
 // Styles
-import { Root } from "./App.styles";
+import { Root } from "../../index.styles";
 
-const App = () => {
+/* const App = () => {
 	return (
 		<Root container>
 			<Routes>
@@ -23,6 +23,21 @@ const App = () => {
 			</Routes>
 		</Root>
 	);
-};
+}; */
 
-export default App;
+const router = createBrowserRouter([
+	{
+		path: "/login",
+		element: <Login />
+	},
+	{
+		path: "/",
+		element: <Home />
+	},
+	{
+		path: "/booking",
+		element: <ScheduleShifts />
+	}
+])
+
+export default router;

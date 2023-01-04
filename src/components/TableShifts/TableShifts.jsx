@@ -6,21 +6,36 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Button } from "@mui/material";
+import { Button } from "@mui/material";import dayjs from 'dayjs';
+import { setAppointmentHour } from "../../redux/reducers/appointmentReducer";
+import { useSelector, useDispatch } from 'react-redux';
+import { useState } from 'react';
+
+	
+
+
 
 function createData(name, calories, fat, carbs, protein) {
 	return { name, calories, fat, carbs, protein };
 }
 
 const rows = [
-	createData("18:00", <Button variant="primary">Reservar</Button>),
-	createData("Ice cream sandwich", 237, 9.0),
-	createData("Eclair", 262, 16.0),
-	createData("Cupcake", 305, 3.7),
-	createData("Gingerbread", 356, 16.0),
+	"17:30",
+	"18:00",
+	"18:30",
+	"19:00"
 ];
 
 export default function BasicTable() {
+	const dispatch = useDispatch();
+	const appointmentHour = useSelector((state) => state.appointmentDate.hour)
+	
+	const handleClick = (newValue) => {
+		dispatch(setAppointmentHour(newValue));
+	};
+
+	console.log("el store date", appointmentHour)
+
 	return (
 		<TableContainer component={Paper}>
 			<Table sx={{ minWidth: 250 }} aria-label="simple table">
@@ -33,13 +48,13 @@ export default function BasicTable() {
 				<TableBody>
 					{rows.map((row) => (
 						<TableRow
-							key={row.name}
+							key={row}
 							sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
 						>
 							<TableCell component="th" scope="row">
-								{row.name}
+								{row}
 							</TableCell>
-							<TableCell align="right">{row.calories}</TableCell>
+							<TableCell align="right"><button  onClick={() => handleClick(row)}>RESERVAR</button></TableCell>
 						</TableRow>
 					))}
 				</TableBody>
