@@ -15,16 +15,17 @@ import TableShifts from '../TableShifts/TableShifts'
 
 const steps = [
 	{
-		label: "Selecciona Profesional",
-		description: `Selecciona un Profesional con el que desees atenderte`,
-		StepContent: <SelectAvatar />,
-	},
-	{
 		label: "Selecciona Fecha de tu preferencia",
 		description: "Selecciona la fecha en la que quieras atenderte",
 		StepContent: <DateTimePicker />,
 		optional: "25/11/2022",
 	},
+	{
+		label: "Selecciona Profesional",
+		description: `Selecciona un Profesional con el que desees atenderte`,
+		StepContent: <SelectAvatar />,
+	},
+	
 	{
 		label: "Seleccione la Hora en la que desea asistir",
 		description: `Los horarios se encuentran sujetos a disponibilidad del profesional`,

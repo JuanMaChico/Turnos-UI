@@ -4,7 +4,8 @@ export const appointmentDateReducer = createSlice({
     name: "appointmentDate",
     initialState: {
         day: null,
-        hour: null
+        hour: null,
+        employee: null
     },
     reducers: {
         setAppointmentDay: (state, action) => {
@@ -12,10 +13,13 @@ export const appointmentDateReducer = createSlice({
         },
         setAppointmentHour: (state, action) => {
             state.hour = action.payload
+        },
+        setAppointmentEmployee: (state, action) => {
+            state.employee = action.payload
         }
     }
 });
 
-export const { setAppointmentDay, setAppointmentHour } = appointmentDateReducer.actions;
+export const { setAppointmentDay, setAppointmentHour, setAppointmentEmployee } = appointmentDateReducer.actions;
 
 export default appointmentDateReducer.reducer;

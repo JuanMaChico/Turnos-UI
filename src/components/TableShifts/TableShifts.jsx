@@ -6,7 +6,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Button } from "@mui/material";import dayjs from 'dayjs';
+import { Button } from "@mui/material";
+import dayjs from 'dayjs';
 import { setAppointmentHour } from "../../redux/reducers/appointmentReducer";
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
@@ -19,22 +20,18 @@ function createData(name, calories, fat, carbs, protein) {
 	return { name, calories, fat, carbs, protein };
 }
 
-const rows = [
-	"17:30",
-	"18:00",
-	"18:30",
-	"19:00"
-];
+const rows = [];
+
 
 export default function BasicTable() {
 	const dispatch = useDispatch();
-	const appointmentHour = useSelector((state) => state.appointmentDate.hour)
+	const appointmentHour = useSelector((state) => state.appointmentDate.hour);
 	
 	const handleClick = (newValue) => {
 		dispatch(setAppointmentHour(newValue));
 	};
 
-	console.log("el store date", appointmentHour)
+
 
 	return (
 		<TableContainer component={Paper}>

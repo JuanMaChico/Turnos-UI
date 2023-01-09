@@ -1,59 +1,49 @@
 import { useState, useEffect } from "react";
 import { Root, TooltipText, AvatarItem } from "./SelectAvatar.styles";
 import foto from "../../assets/Avatar.png";
+import { getEmployees } from "../../services/appointmentService";
+import { useSelector, useDispatch } from 'react-redux';
+import { setAppointmentEmployee } from "../../redux/reducers/appointmentReducer";
+
 
 const SelectAvatar = () => {
-
-	
-	const data = [
-		{
-			nombre: "Franco",
-			avatar: foto,
-			selected: true
-		},
-		{
-			nombre: "Lautaro",
-			avatar: foto,
-			selected: false
-		},
-		{
-			nombre: "Bruno",
-			avatar: foto,
-			selected: false
-		},
-	];
+	let data = [];
 	
 	const [stateData, setStateData ] = useState(data);
+	const dispatch = useDispatch();
+	const employee = useSelector((state) => state.appointmentDate.employee)
 
 	useEffect(() => {
 
-		console.log("Prendio");
+		async function getEmployeeList() {
+			let result = await getEmployees({store: {id: 2}})
+			console.log(result)
+			setStateData(result.data)
+		}
+		getEmployeeList()
 
-	}, [stateData])
+	}, [])
 	
-
 	const handleSelect = ( e ) => {
 
 		stateData.find((element, index ) => {
 
-			if(element.nombre === e.target.alt){
+			if(element.name === e.target.alt){
 				element.selected = !element.selected
-
-
-
 			}
+			dispatch(setAppointmentEmployee(element))
 		})
 	};
 
 	return (
 		<Root>
 			{stateData.map(( index , item ) => (
-				<TooltipText key={item} title={index.nombre}>
+				<TooltipText key={item} title={index.name}>
 					<AvatarItem
 						onClick={handleSelect}
 						selected={index.selected}
-						alt={index.nombre}
-						src={index.avatar}
+						alt={index.name}
+						src={foto}
 					/>
 				</TooltipText>
 			))}

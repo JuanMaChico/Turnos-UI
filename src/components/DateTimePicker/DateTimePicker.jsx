@@ -15,14 +15,16 @@ const DateTimePicker = () => {
 	const [value, setValue] = useState(dayjs(dayjs().format('YYYY-MM-DDTHH:mm:ssZ')));
 	
 	const dispatch = useDispatch();
+	dispatch(setAppointmentDay(value.format('DD/MM/YYYY')));
 	const appointmentDay = useSelector((state) => state.appointmentDate.day)
-	const appointmentHour = useSelector((state) => state.appointmentDate.hour)
+
 	
 	const handleChange = (newValue) => {
+		console.log(newValue)
 		dispatch(setAppointmentDay(newValue.format('DD/MM/YYYY')));
+		setValue(newValue)
 	};
 
-	console.log("el store date", appointmentDay)
 	return (
 		<div style={{ margin: '20px' }}>
 			<LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={esES}
