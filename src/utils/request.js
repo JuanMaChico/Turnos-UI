@@ -8,14 +8,13 @@ const post = async (url, bodyPayload) => {
                 'Content-Type': 'application/json'
             }
         });
-        console.log(result)
         return await result.json();
     
     } catch(error) {
         console.log(error);
         return {
             error: error,
-            msg: "Error trying to fetch url"
+            message: "Error trying to fetch url"
         }
     }
 }

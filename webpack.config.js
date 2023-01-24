@@ -68,9 +68,11 @@ module.exports = {
 	resolve: {
 		alias: {
 			// Componentes
-			Components: Path.join(__dirname, "src/Components"),
+			Components: Path.join(__dirname, "src/components"),
 			// Assets
-			Assets: Path.join(__dirname, "src/Assets"),
+			Assets: Path.join(__dirname, "src/assets"),
+			// Services
+			Services: Path.join(__dirname, "src/services")
 		},
 		extensions: [".js", ".jsx", ".json"],
 	},

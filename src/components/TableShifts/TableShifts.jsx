@@ -10,7 +10,8 @@ import { Button } from "@mui/material";
 import dayjs from 'dayjs';
 import { setAppointmentHour } from "../../redux/reducers/appointmentReducer";
 import { useSelector, useDispatch } from 'react-redux';
-import { useState } from 'react';
+import { getEmployeeShifts } from "Services/appointmentService.js";
+import { useState, useEffect } from 'react';
 
 	
 
@@ -24,14 +25,26 @@ const rows = [];
 
 
 export default function BasicTable() {
+	const [shifts, setShifts] = useState([]);
 	const dispatch = useDispatch();
 	const appointmentHour = useSelector((state) => state.appointmentDate.hour);
-	
+	const appointmentDate = useSelector((state) => state.appointmentDate.day);
+	const appointmentEmployee = useSelector((state) => state.appointmentDate.employee);
+	const storeSelected = useSelector((state) => state.userData.store);
+
 	const handleClick = (newValue) => {
 		dispatch(setAppointmentHour(newValue));
 	};
 
+	const getShifts = async () => {
+		const response =  await getEmployeeShifts({store: {"id": 2 }}, appointmentEmployee, appointmentDate);
+		setShifts(response.data);
+	}
+	console.log("los Shifts", shifts)
 
+useEffect(() => {
+	getShifts()
+}, [])
 
 	return (
 		<TableContainer component={Paper}>

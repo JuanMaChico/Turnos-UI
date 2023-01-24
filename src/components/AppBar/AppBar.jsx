@@ -52,7 +52,13 @@ const mobileBar = (props) => {
 						<Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
 							{title}
 						</Typography>
-						<Button color="inherit">Login</Button>
+						<Button 
+							color="inherit"
+							onClick={() => {
+								handleClose();
+								redirect("/login");
+							}}
+							>Login</Button>
 					</Toolbar>
 				</AppBar>
 			</Box>

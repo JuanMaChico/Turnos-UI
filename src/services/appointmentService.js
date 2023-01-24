@@ -20,3 +20,12 @@ export const getEmployees = async (store) => {
         console.log(error)
     }
 }
+
+export const getEmployeeShifts = async (store, employee, date, customer = null) => {
+    try {
+
+        return await request.post("http://localhost:3000/api/v1/appointments/getCalendar", {...store, employee, date, customer })
+    } catch(error) {
+        console.log(error)
+    }
+}

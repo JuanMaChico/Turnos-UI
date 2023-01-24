@@ -9,16 +9,16 @@ import { setAppointmentEmployee } from "../../redux/reducers/appointmentReducer"
 const SelectAvatar = () => {
 	let data = [];
 	
-	const [stateData, setStateData ] = useState(data);
+	const [employeeList, setEmployeeList ] = useState(data);
+	const [employeeSelected, setEmployeeSelected] = useState(0)
 	const dispatch = useDispatch();
 	const employee = useSelector((state) => state.appointmentDate.employee)
-
+	
 	useEffect(() => {
 
 		async function getEmployeeList() {
 			let result = await getEmployees({store: {id: 2}})
-			console.log(result)
-			setStateData(result.data)
+			setEmployeeList(result.data)
 		}
 		getEmployeeList()
 
@@ -26,23 +26,31 @@ const SelectAvatar = () => {
 	
 	const handleSelect = ( e ) => {
 
-		stateData.find((element, index ) => {
 
-			if(element.name === e.target.alt){
-				element.selected = !element.selected
-			}
-			dispatch(setAppointmentEmployee(element))
+		const newState = employeeList.map((employee) => {
+			let fullName = employee.name + " " + employee.lastname; 
+			if(fullName === e.target.alt){
+				if(employeeSelected == employee.id_number) {
+					setEmployeeSelected(0);
+					dispatch(setAppointmentEmployee({}));
+				} else {
+					setEmployeeSelected(employee.id_number);
+					dispatch(setAppointmentEmployee(employee));
+				}
+				
+			} 
+			return employee
 		})
+		setEmployeeList(newState)
 	};
-
 	return (
 		<Root>
-			{stateData.map(( index , item ) => (
-				<TooltipText key={item} title={index.name}>
+			{employeeList.map(( employee , index ) => (
+				<TooltipText key={index} title={employee.name}>
 					<AvatarItem
 						onClick={handleSelect}
-						selected={index.selected}
-						alt={index.name}
+						selected={ employee.id_number == employeeSelected ? true : false }
+						alt={employee.name + " " +  employee.lastname}
 						src={foto}
 					/>
 				</TooltipText>

@@ -11,8 +11,15 @@ export const Root = styled(Grid)`
 	background-color: #1d2935e1;
 	padding: 2rem;
 	border-radius: 2rem;
+	min-width: 400px;
 `;
 
 export const Title = styled(Typography)(({ theme }) => {
 	// theme.typography.h4.color = "red";
 });
+
+export const GoogleButtonContainer = styled("div")`
+	display: flex;
+	justify-content: center;
+	margin-top: 30px;
+`;

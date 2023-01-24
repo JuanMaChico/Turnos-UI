@@ -5,9 +5,10 @@
 // Dependencias
 import { createBrowserRouter } from "react-router-dom";
 //Components
-import Login from "../../views/Login/Login";
 import Home from "../../views/Home/Home";
 import ScheduleShifts from "../../views/ScheduleShifts/ScheduleShifts";
+import LoginMiddleware, { Login } from "./LoginMiddleware";
+
 
 const router = createBrowserRouter([
 	{
@@ -16,11 +17,11 @@ const router = createBrowserRouter([
 	},
 	{
 		path: "/",
-		element: <Home />
+		element: <LoginMiddleware><Home /></LoginMiddleware>
 	},
 	{
 		path: "/booking",
-		element: <ScheduleShifts />
+		element: <LoginMiddleware><ScheduleShifts /></LoginMiddleware>
 	}
 ])
 

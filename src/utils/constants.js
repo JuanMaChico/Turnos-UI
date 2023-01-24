@@ -19,3 +19,5 @@ export const colors = {
 	CUATRO: "#3498DB",
 	CINCO: "#2980B9",
 };
+
+export const KEYTOKENSTORAGE = "token";

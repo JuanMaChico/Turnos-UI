@@ -8,11 +8,17 @@ const Input = (props) => {
 		label = "",
 
 		type = "",
+
+		ref = props.ref,
+
+		value = props.value,
+
+		onChange = () => {}
 	} = props;
 
 	return (
 		<Root item>
-			<TextInput fullWidth type={type} label={label} variant="standard" />
+			<TextInput fullWidth type={type} label={label} variant="standard" ref={ref} value={value} onChange={onChange}/>
 		</Root>
 	);
 };
