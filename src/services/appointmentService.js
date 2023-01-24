@@ -15,7 +15,8 @@ export const getAppointments = async (employee = null) => {
 export const getEmployees = async (store) => {
     try {
 
-        return await request.post("http://localhost:3000/api/v1/appointments/getEmployees", store)
+        return await request.post("http://localhost:3000/api/v1/appointments/getEmployees", store);
+        
     } catch(error) {
         console.log(error)
     }
