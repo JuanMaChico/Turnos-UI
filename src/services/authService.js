@@ -1,5 +1,6 @@
 import request from "../utils/request";
 import responseValidator from "../utils/ResponseValidator";
+import { fakeUser } from "../utils/jsonResponses/jsonAuthResponse";
 export const glogin = async (token) => {
     try {
 
@@ -8,5 +9,13 @@ export const glogin = async (token) => {
 
     } catch(error) {
         console.log("glogin error: ", error)
+    }
+}
+
+export const login = async (credentials) => {
+    try {
+        return responseValidator(fakeUser);
+    } catch(error) {
+        console.log("login error: ", error)
     }
 }

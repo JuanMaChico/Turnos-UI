@@ -5,7 +5,7 @@ import Input from 'Components/Input/Input';
 import { useNavigate } from "react-router-dom";
 import Alerta from '../../components/Alerta/Alerta';
 import { GoogleLogin } from "@react-oauth/google";
-import { glogin } from "../../services/authService";	
+import { glogin, login } from "../../services/authService";	
 import Storage from "../../utils/storage";
 import { KEYTOKENSTORAGE } from "../../utils/constants";
 import { useDispatch } from "react-redux";
@@ -35,13 +35,20 @@ const Login = (props) => {
 	}
 
 	// funcion de loguear con email y contrasña
-	function login() {
-		console.log({
-			user: {
-				email: inputUser.current,
-				password: inputPassword.current
-			}
-		})
+	async function classicLogin () {
+		const credentials = {
+			email: inputUser.current,
+			password: inputPassword.current
+		}
+		const response = await login(credentials);
+		if(response) {
+			Storage.set(KEYTOKENSTORAGE, response.user?.token);
+			dispatch(setUserData(response.user))
+			redirect("/booking");
+		}
+		else {
+			alert("Login failed")
+		}
 	}
 
 	return (
@@ -49,7 +56,7 @@ const Login = (props) => {
 				<Title variant="h4">{title}</Title>
 				<Input label="Usuario" ref={inputUser} onChange={(e) => inputUser.current = e.target.value }  />
 				<Input type="password" label="Contraseña" ref={inputPassword} onChange={(e) => inputPassword.current = e.target.value }/>
-				<Button label="Ingresar" click={login}/>
+				<Button label="Ingresar" click={classicLogin}/>
 				{/* <Alerta/> */}
 				<GoogleButtonContainer>
 				<GoogleLogin

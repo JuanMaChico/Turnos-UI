@@ -1,4 +1,4 @@
-module.exports = {
+export const googleFakeUser = {
     "code": 200,
     "user": {
       "id": 1,
@@ -13,3 +13,14 @@ module.exports = {
       "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiZmVkZWdhcmNpYTIyMkBnbWFpbC5jb20iLCJpYXQiOjE2NzU1NjEzNTgsImV4cCI6MTY3NjE2NjE1OH0.bXesxSQ5CiXEfdcUcTbpCjP41kL2C-qmjIvzpHOnBhU"
     }
   }
+
+export const fakeUser = {
+    "code": 200,
+    "user": {
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiZmVkZWdhcmNpYTIyMkBnbWFpbC5jb20iLCJpYXQiOjE2NzU1NjEzNTgsImV4cCI6MTY3NjE2NjE1OH0.bXesxSQ5CiXEfdcUcTbpCjP41kL2C-qmjIvzpHOnBhU",
+        "email": "fede@fede.com",
+        "id": 1,
+        "name": "Federico",
+        "lastname": "Garcia"
+    }
+}

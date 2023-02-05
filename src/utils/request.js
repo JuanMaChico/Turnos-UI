@@ -1,5 +1,5 @@
 import { DEV_SERVER } from "./constants";
-import fakeUser from "./jsonResponses/jsonAuthResponse";
+import { googleFakeUser } from "./jsonResponses/jsonAuthResponse";
 
 const post = async (url, bodyPayload) => {
     try {
@@ -14,7 +14,7 @@ const post = async (url, bodyPayload) => {
             });
             return await result.json();
         } else {
-            return fakeUser
+            return googleFakeUser
         }
     } catch(error) {
         console.log(error);
