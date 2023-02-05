@@ -1,15 +1,21 @@
+import { DEV_SERVER } from "./constants";
+import fakeUser from "./jsonResponses/jsonAuthResponse";
+
 const post = async (url, bodyPayload) => {
     try {
-        const body = JSON.stringify(bodyPayload);
-        const result = await fetch(url, {
-            method: "POST",
-            body,
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-        return await result.json();
-    
+        if(!DEV_SERVER) {
+            const body = JSON.stringify(bodyPayload);
+            const result = await fetch(url, {
+                method: "POST",
+                body,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            return await result.json();
+        } else {
+            return fakeUser
+        }
     } catch(error) {
         console.log(error);
         return {
@@ -18,6 +24,7 @@ const post = async (url, bodyPayload) => {
         }
     }
 }
+
 
 export default {
     post

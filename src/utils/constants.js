@@ -21,3 +21,5 @@ export const colors = {
 };
 
 export const KEYTOKENSTORAGE = "token";
+
+export const DEV_SERVER = process.env.DEV_SERVER;
