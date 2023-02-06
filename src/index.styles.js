@@ -1,8 +1,8 @@
 /**
  * @desc styled-components
  */
-import { Grid } from "@mui/material";
-import styled from "styled-components";
+import { Grid, styled } from "@mui/material";
+// import styled from "styled-components";
 
 /**
  * @desc Contenedor Root
