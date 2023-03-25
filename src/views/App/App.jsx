@@ -1,7 +1,3 @@
-/**
- *
- */
-
 // Dependencias
 import { Routes, Route, createBrowserRouter } from 'react-router-dom';
 //Components
