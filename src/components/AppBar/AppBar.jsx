@@ -3,21 +3,21 @@
  */
 
 // styles
-import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
+import * as React from 'react';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
 
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import { useNavigate } from "react-router-dom";
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import { useNavigate } from 'react-router-dom';
 
 const mobileBar = (props) => {
-	const { title = "Turnos Online" } = props;
+	const { title = 'Turnos Online' } = props;
 
 	const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -52,13 +52,15 @@ const mobileBar = (props) => {
 						<Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
 							{title}
 						</Typography>
-						<Button 
+						<Button
 							color="inherit"
 							onClick={() => {
 								handleClose();
-								redirect("/login");
+								redirect('/login');
 							}}
-							>Login</Button>
+						>
+							Login
+						</Button>
 					</Toolbar>
 				</AppBar>
 			</Box>
@@ -69,13 +71,21 @@ const mobileBar = (props) => {
 					open={open}
 					onClose={handleClose}
 					MenuListProps={{
-						"aria-labelledby": "basic-button",
+						'aria-labelledby': 'basic-button',
 					}}
 				>
 					<MenuItem
 						onClick={() => {
 							handleClose();
-							redirect("booking");
+							redirect('profile');
+						}}
+					>
+						Perfil
+					</MenuItem>
+					<MenuItem
+						onClick={() => {
+							handleClose();
+							redirect('booking');
 						}}
 					>
 						Reservar Turno

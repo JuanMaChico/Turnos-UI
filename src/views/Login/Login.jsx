@@ -34,7 +34,7 @@ const Login = (props) => {
 		}
 	}
 
-	// funcion de loguear con email y contrasña
+	// función de loguear con email y contraseña
 	async function classicLogin () {
 		const credentials = {
 			email: inputUser.current,
